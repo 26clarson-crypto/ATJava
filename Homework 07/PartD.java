@@ -3,7 +3,7 @@ Part D
 */
 public class PartD {
     public static void main(String[] args) {
-        double grade = ch;
+        double grade = 4.0; // Example grade
         String letterGrade;
 
         if (grade >= 4.0) {
@@ -31,7 +31,7 @@ public class PartD {
         } else {
             letterGrade = "F";
         }
-//Error code in case someone enters a grade over 4.0 or less than 0.0 or a character
+//Error code in case someone enters a grade over 4.0 or less than 0.0 
         if (grade > 4.0 || grade < 0.0) {
             System.out.println("Error: Invalid grade entered.");
         } else {
