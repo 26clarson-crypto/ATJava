@@ -11,39 +11,18 @@ public class Project1 {
            String name = scanner.nextLine();
               System.out.print("Enter the day of the week (first three letters): ");
               String dayInput = scanner.nextLine().toLowerCase();
-
-
-              // take the time in military time, both hours and minutes as an integer
-                int hourTime = 0;
-        int minuteTime = 0;
-        int militaryTime = 0;
-
-        try {
-            System.out.print("Enter the time (HHMM, 24-hour format): ");
-            String input = scanner.nextLine().trim();
-
-            // Check that the input is exactly 4 digits
-            if (input.length() != 4 || !input.matches("\\d{4}")) {
-                throw new NumberFormatException();
-            }
-
-            // Extract hour and minute
-            hourTime = Integer.parseInt(input.substring(0, 2));
-            minuteTime = Integer.parseInt(input.substring(2, 4));
-
-            // Validate ranges
-            if (hourTime < 0 || hourTime > 23 || minuteTime < 0 || minuteTime > 59) {
-                throw new NumberFormatException();
-            }
-
-            // Store both in one integer if needed
-            militaryTime = hourTime * 100 + minuteTime;
-
-        } catch (NumberFormatException e) {
-            System.out.println("Error: Invalid time entered.");
+              System.out.print("Enter the time (HH:MM): ");
+              String rawTime = scanner.nextLine().trim();
+              int hour = 0;
+            int min = 0;
+             if (rawTime.contains(":")) {
+            int i = rawTime.indexOf(":");
+            hour = Integer.parseInt(rawTime.substring(0, i));
+            min = Integer.parseInt(rawTime.substring(i + 1));
+        } else {
+            System.err.println("Unable to parse time, stopping program.");
             return;
         }
-
         System.out.print("Enter your age: ");
             int age = Integer.parseInt(scanner.nextLine());
             System.out.print("Are you a student? (y/n): ");
@@ -92,7 +71,7 @@ public class Project1 {
 
                 // Format Output with lines separating the inputted data with the rest, and a line between the time and base price and the age discount and final price
                 System.out.println("--------------------------------------------------");
-                System.out.printf("Name: %s\nDay: %s\nTime: %04d\n", name, day, militaryTime);
+                System.out.printf("Name: %s\nDay: %s\nTime: %02d:%02d\n", name, day, hour, min);
                 System.out.println("--------------------------------------------------");
                 //format the base price, age discount, and student discount with 2 decimal places aligned
                 System.out.printf("Base Price: $%.2f\n Age Discount: $%.2f\n Student Discount: $%.2f\n", basePrice, ageDiscount, studentDiscount);
