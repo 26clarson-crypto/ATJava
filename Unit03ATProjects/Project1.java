@@ -1,6 +1,6 @@
 /* Chloe Larson
 Java Project
-I used chatgpt to help understand how to input military time and validate it, as well as how to format the output neatly.
+I used Mr.Eng to help understand how to input military time and validate it, as well as how to format the output neatly.
 */
 import java.util.Scanner;
 
