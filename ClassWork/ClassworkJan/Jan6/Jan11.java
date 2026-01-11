@@ -1,6 +1,7 @@
 /* Chloe Larson
 Jan 11
 Classwork - Coding Challenge (Modified)
+Used the internnet for help on the methods and just to understand the target index and how to check for it
 */
 
 import java.util.Scanner;
