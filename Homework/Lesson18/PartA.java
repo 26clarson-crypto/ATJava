@@ -31,4 +31,3 @@ public class PartA {
         scanner.close();
     }
 }
-
