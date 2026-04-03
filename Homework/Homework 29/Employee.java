@@ -30,4 +30,11 @@ public class Employee {
         // Employees only get an annual salary.
         return getSalary();
     }
+    // put in a displayInfo method to show the employee's name and salary
+    public void displayInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Salary: " + salary);
+        
+    }
+
 }
