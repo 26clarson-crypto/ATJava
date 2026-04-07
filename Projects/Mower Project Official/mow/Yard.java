@@ -1,6 +1,7 @@
 /* Chloe Larson
 AT Mower Project
-I used help form the internet to understand how to orienate the folders, and the display of the yard.  */
+I used help form the internet to understand how to orienate the folders, and the display of the yard. 
+Updated for Part B */
 
 package mow;
 
@@ -39,10 +40,21 @@ public class Yard {
         return yard[0].length - 2;
     }
 
+    // Original print with no mower
     public void print() {
+        print(null);
+    }
+
+    // Updated print that shows the mower if provided
+    public void print(Mower mower) {
         for (int i = 0; i < yard.length; i++) {
             for (int j = 0; j < yard[0].length; j++) {
-                System.out.print(yard[i][j]);
+                // If mower is here, print its direction character instead
+                if (mower != null && mower.getRow() == i && mower.getCol() == j) {
+                    System.out.print(mower.getDirectionChar());
+                } else {
+                    System.out.print(yard[i][j]);
+                }
             }
             System.out.println();
         }
