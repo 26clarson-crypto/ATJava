@@ -1,10 +1,9 @@
-/* Chloe Larson 
-Part A
-Main code for calling on the mow package to create the yard. 
-Updated for Part B */
+/* Chloe L
+Updated Part C */
 
 import mow.Yard;
 import mow.Mower;
+import java.util.Scanner;
 
 public class Main {
 
@@ -22,24 +21,36 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        // Create a yard with 5 rows and 24 columns of lawn
-        Yard yard = new Yard(5, 24);
+        clearScreen();
+        Scanner scanner = new Scanner(System.in);
 
-        // Place mower on the left side of the lawn, row 3, facing right
-        Mower mower = new Mower(3, 1, 1);
+        System.out.print("Enter the height of the lawn: ");
+        int height = scanner.nextInt();
 
-        // Move across the yard until it hits the right brick border
-        while (mower.senseForward(yard) != 'R') {
-            mower.cutGrass(yard);   // cut grass under mower
+        System.out.print("Enter the width of the lawn: ");
+        int width = scanner.nextInt();
+
+        // Create yard and mower
+        Yard yard = new Yard(height, width);
+        Mower mower = new Mower(1, 1, 1);
+
+        // Randomize mower to a random corner and direction
+        mower.randomize(yard);
+
+        // Mow the lawn until done
+        boolean mowing = true;
+        while (mowing) {
             clearScreen();
-            yard.print(mower);      // print yard with mower
-            delay(500);   // wait half a second for a delay
-            mower.moveForward();    // move right
+            yard.print(mower);
+            delay(200);
+            mowing = mower.updateMower(yard);
         }
 
-        // Cut the last cell and do a final print
-        mower.cutGrass(yard);
+        // Final state
         clearScreen();
         yard.print(mower);
+        System.out.println("\nLawn mowing complete!");
+
+        scanner.close();
     }
 }
